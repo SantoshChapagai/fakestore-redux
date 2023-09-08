@@ -1,9 +1,14 @@
+
 import React, { useState } from 'react';
-import { Card } from 'react-bootstrap';
+import { Button, Card } from 'react-bootstrap';
+import { useAppDispatch } from '../app/hooks';
+import { addToCart } from "../features/cartSlice";
 
 
 const Product = (props) => {
-  const { image, title, category, price, description, id, rating } = props
+  const { image, title, category, price, description, id, rating } = props;
+  const product = props;
+  const dispatch = useAppDispatch();
 
   const [show, setShow] = useState(false);
 
@@ -21,6 +26,12 @@ const Product = (props) => {
 
   const totalHeight = show ? "auto" : "auto";
 
+  const handleAddProduct = () => {
+    console.log("products", product);
+    dispatch(addToCart(product))
+
+  }
+
   return (
 
     <div>
@@ -37,6 +48,7 @@ const Product = (props) => {
             {showHandler()}
             <Card.Link onClick={toggleDescription} style={{ cursor: "ponter" }}>{show ? 'See Less' : 'See More'}</Card.Link>
           </div>
+          <Button variant="primary" onClick={handleAddProduct}>Add to cart</Button>
         </article>
       </section>
 

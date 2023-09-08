@@ -13,10 +13,22 @@ img {
   border: 1px solid black;
   margin: 2rem 1.5rem;
   padding: 0.5rem;
+  background-color: rgb(247, 246, 245);
+  box-shadow: 1px 1px 1px 1px rgb(61, 54, 54);
 }
 
 .productContainer {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 0.5rem;
+}
+
+a {
+  text-decoration: none;
+  cursor: pointer;
+}
+
+a:hover {
+  text-decoration: underline;
+  color: salmon;
 }
