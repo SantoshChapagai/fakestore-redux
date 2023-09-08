@@ -27,13 +27,13 @@ const Product = (props) => {
       <section className='Detail'>
         <article className='Detail_thumbnail' style={{ height: totalHeight }}>
           <img src={image} alt={title} />
-          <h3>{id}</h3>
-          <h1>{title}</h1>
-          <h2>{category}</h2>
-          <h3>{price}</h3>
-          <h4>{rating.rate}</h4>
-          <h4>{rating.count}</h4>
-          <div>
+          <h3 className='id'>{id}</h3>
+          <h4 className='title'>{title}</h4>
+          <h2 className='category'>{category}</h2>
+          <h3 className='price'>Price: {price}€</h3>
+          <h5 className='rating'>Rating: {rating.rate}</h5>
+          <h5 className='count'>Total ratings: {rating.count}</h5>
+          <div className='description'>
             {showHandler()}
             <Card.Link onClick={toggleDescription} style={{ cursor: "ponter" }}>{show ? 'See Less' : 'See More'}</Card.Link>
           </div>
