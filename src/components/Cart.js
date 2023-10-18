@@ -1,6 +1,7 @@
 import React from 'react';
 import { Container } from 'react-bootstrap';
 import { useSelector } from 'react-redux';
+// import CartProduct from './CartProduct';
 import Product from './Product';
 
 const Cart = () => {
@@ -12,7 +13,7 @@ const Cart = () => {
         <h1>Cart will be here</h1>
         {cartItems.length === 0 && <p>Your cart is empty</p>}
         {cartItems.map((item) => (
-          <Product {...item} />
+          <Product key={item.index} {...item} />
         ))}
       </Container>
     </div>

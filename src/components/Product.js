@@ -1,14 +1,17 @@
 
 import React, { useState } from 'react';
 import { Button, Card } from 'react-bootstrap';
+import { useLocation } from 'react-router-dom';
 import { useAppDispatch } from '../app/hooks';
-import { addToCart } from "../features/cartSlice";
+import { addToCart, removeItemFromCart } from "../features/cartSlice";
 
 
 const Product = (props) => {
   const { image, title, category, price, description, id, rating } = props;
   const product = props;
+  const cartItems = props.cartItems;
   const dispatch = useAppDispatch();
+  const location = useLocation();
 
   const [show, setShow] = useState(false);
 
@@ -31,6 +34,10 @@ const Product = (props) => {
     dispatch(addToCart(product))
 
   }
+  const handleRemoveProduct = (item) => {
+    if (item.index === product.index)
+      dispatch(removeItemFromCart(product));
+  }
 
   return (
 
@@ -49,6 +56,8 @@ const Product = (props) => {
             <Card.Link onClick={toggleDescription} style={{ cursor: "ponter" }}>{show ? 'See Less' : 'See More'}</Card.Link>
           </div>
           <Button variant="primary" onClick={handleAddProduct}>Add to cart</Button>
+          {location.pathname === "/cart" && <Button variant='danger' onClick={handleRemoveProduct}>Remove from cart</Button>}
+          {/* {(cartItems.length > 0 && cartItems.find(item => item.id === product.id)) && <Button variant='danger' onClick={handleRemoveProduct}>Remove from cart</Button>} */}
         </article>
       </section>
 
